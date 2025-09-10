@@ -8,7 +8,7 @@ const auth = (req, res, next) => {
   const token = authHeader.split(' ')[1];
   try {
     const payload = jwt.verify(token, process.env.JWT_SECRET);
-    req.user = { userId: payload.id, role: payload.role };
+    req.user = { userId: payload.id }; // Only userId is needed now
     next();
   } catch (err) {
     res.status(401).json({ message: 'Token is not valid' });

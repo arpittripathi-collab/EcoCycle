@@ -8,20 +8,15 @@ export const findMatches = async (req, res) => {
       return res.status(400).json({ message: 'Location is required for matching' });
     }
 
-    // --- FIX STARTS HERE ---
-    // Normalize the incoming request to match the database/utility function structure.
-    // We create a new object that has the .location.coordinates array.
     const normalizedReceiver = {
       ...receiverRequest,
       location: {
         coordinates: [receiverRequest.location.lon, receiverRequest.location.lat]
       }
     };
-    // --- FIX ENDS HERE ---
 
-    // The database query still uses the original lon/lat from the request body.
     const donors = await Item.find({
-      ownerType: 'donor',
+      itemType: 'donation', // Find items listed as donations
       location: {
         $near: {
           $geometry: { type: 'Point', coordinates: [receiverRequest.location.lon, receiverRequest.location.lat] },
@@ -38,8 +33,6 @@ export const findMatches = async (req, res) => {
 
     const maps = { categoryMap: new Map(), professionMap: new Map(), genderMap: new Map() };
     const donorVectors = donors.map(d => ({ id: d._id.toString(), vec: buildVector(d, maps), item: d }));
-    
-    // We now use the NORMALIZED receiver object for all utility functions.
     const receiverVec = buildVector(normalizedReceiver, maps);
 
     const knnDistances = {};
@@ -50,7 +43,6 @@ export const findMatches = async (req, res) => {
     const scoredResults = donorVectors.map(dv => {
       const donor = dv.item;
       const id = dv.id;
-      // Pass the NORMALIZED receiver object to computeScores.
       const scores = computeScores(normalizedReceiver, donor, fuseScoreMap.get(id), knnDistances[id]);
       return { donor, ...scores };
     });
@@ -63,7 +55,6 @@ export const findMatches = async (req, res) => {
       results: scoredResults.slice(0, 50)
     });
   } catch (err) {
-    // Add more detailed error logging for debugging
     console.error("Error in /api/match:", err); 
     res.status(500).json({ message: "An internal server error occurred.", error: err.message });
   }

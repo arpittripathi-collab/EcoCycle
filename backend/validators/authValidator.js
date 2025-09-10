@@ -16,7 +16,6 @@ export const signupSchema = z.object({
   phone: z
     .string()
     .refine((val) => /^[0-9]{10}$/.test(val), { message: "Phone number must be exactly 10 digits" }),
-  role: z.enum(['donor', 'receiver'], { required_error: "Role is required" }),
 });
 
 export const loginSchema = z.object({

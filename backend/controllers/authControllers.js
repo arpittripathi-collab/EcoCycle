@@ -8,21 +8,20 @@ export const signup = async (req, res) => {
     if (!parsed.success) {
       return res.status(400).json({ message: parsed.error.issues[0].message });
     }
-    const { name, email, phone, password, role } = parsed.data;
+    const { name, email, phone, password } = parsed.data;
 
     const existingUser = await User.findOne({ $or: [{ email }, { phone }] });
     if (existingUser) {
         return res.status(400).json({ message: "Email or Phone Number already exists" });
     }
 
-    const user = await User.create({ name, email, phone, password, role });
-
-    const token = generateToken(user._id, user.role);
+    const user = await User.create({ name, email, phone, password });
+    const token = generateToken(user._id);
 
     res.status(201).json({
       message: "User Registered Successfully",
       token,
-      user: { id: user._id, name: user.name, email: user.email, role: user.role }
+      user: { id: user._id, name: user.name, email: user.email }
     });
   } catch (error) {
     res.status(500).json({ message: "Internal Server Error", error: error.message });
@@ -42,12 +41,12 @@ export const login = async (req, res) => {
             return res.status(401).json({ message: 'Invalid email or password' });
         }
         
-        const token = generateToken(user._id, user.role);
+        const token = generateToken(user._id);
 
         res.status(200).json({
             message: "Login Successful",
             token,
-            user: { id: user._id, name: user.name, email: user.email, role: user.role }
+            user: { id: user._id, name: user.name, email: user.email }
         });
     } catch (error) {
         res.status(500).json({ message: "Internal Server Error", error: error.message });

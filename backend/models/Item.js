@@ -2,7 +2,11 @@ import mongoose from 'mongoose';
 
 const ItemSchema = new mongoose.Schema({
   ownerId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
-  ownerType: { type: String, enum: ['donor', 'receiver'], required: true },
+  itemType: { // Formerly ownerType
+    type: String, 
+    enum: ['donation', 'request'], // An item is either a donation or a request
+    required: true 
+  },
   itemName: { type: String, required: true },
   category: { type: String },
   images: {
@@ -16,7 +20,7 @@ const ItemSchema = new mongoose.Schema({
   priority: { type: Boolean, default: false },
   location: {
     type: { type: String, enum: ['Point'], default: 'Point' },
-    coordinates: { type: [Number], required: true } // [longitude, latitude]
+    coordinates: { type: [Number], required: true }
   },
   createdAt: { type: Date, default: Date.now }
 });

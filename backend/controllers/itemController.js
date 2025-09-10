@@ -7,14 +7,18 @@ export const createItem = async (req, res) => {
       return res.status(400).json({ message: 'Exactly 2 images are required' });
     }
     const images = files.map(f => `/uploads/${f.filename}`);
-    const { itemName, category, gender, profession, age, priority, location } = req.body;
+    const { itemName, itemType, category, gender, profession, age, priority, location } = req.body;
+
+    if (!itemType || !['donation', 'request'].includes(itemType)) {
+        return res.status(400).json({ message: 'Item type must be either "donation" or "request".' });
+    }
 
     const parsedLocation = JSON.parse(location);
     const loc = { type: 'Point', coordinates: [parseFloat(parsedLocation.lon), parseFloat(parsedLocation.lat)] };
 
     const item = new Item({
       ownerId: req.user.userId,
-      ownerType: req.user.role,
+      itemType, // Set from request body
       itemName, category, gender, profession,
       age: age ? Number(age) : undefined,
       priority: priority === 'true',
@@ -29,15 +33,13 @@ export const createItem = async (req, res) => {
 };
 
 export const getItems = async (req, res) => {
-  const { category, ownerType, page = 1, limit = 20 } = req.query;
-  const filter = {};
-  if (category) filter.category = category;
-  if (ownerType) filter.ownerType = ownerType;
+  const { page = 1, limit = 20 } = req.query;
+  const filter = { ownerId: req.user.userId }; // Fetch items for the logged-in user
 
   const skip = (page - 1) * limit;
 
   try {
-    const items = await Item.find(filter).skip(Number(skip)).limit(Number(limit));
+    const items = await Item.find(filter).sort({ createdAt: -1 }).skip(Number(skip)).limit(Number(limit));
     const total = await Item.countDocuments(filter);
     res.json({ page: Number(page), limit: Number(limit), total, items });
   } catch (err) {
