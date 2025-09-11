@@ -15,8 +15,16 @@ export const findMatches = async (req, res) => {
       }
     };
 
+    // Exclude items that are already claimed or owned by requester or that the requester has passed on
+    const requester = req.userId;
+    const user = requester ? await (await import('../models/User.js')).default.findById(requester) : null;
+    const ignored = user && user.ignoredItems ? user.ignoredItems : [];
+
     const donors = await Item.find({
       itemType: 'donation', // Find items listed as donations
+      isClaimed: false,
+      ownerId: { $ne: requester },
+      _id: { $nin: ignored },
       location: {
         $near: {
           $geometry: { type: 'Point', coordinates: [receiverRequest.location.lon, receiverRequest.location.lat] },
@@ -31,9 +39,9 @@ export const findMatches = async (req, res) => {
     donors.forEach(d => fuseScoreMap.set(d._id.toString(), 1));
     fuseResults.forEach(r => fuseScoreMap.set(r.item._id.toString(), r.score));
 
-    const maps = { categoryMap: new Map(), professionMap: new Map(), genderMap: new Map() };
-    const donorVectors = donors.map(d => ({ id: d._id.toString(), vec: buildVector(d, maps), item: d }));
-    const receiverVec = buildVector(normalizedReceiver, maps);
+  const maps = { categoryMap: new Map(), genderMap: new Map() };
+  const donorVectors = donors.map(d => ({ id: d._id.toString(), vec: buildVector(d, maps), item: d }));
+  const receiverVec = buildVector(normalizedReceiver, maps);
 
     const knnDistances = {};
     donorVectors.forEach(dv => {

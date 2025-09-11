@@ -2,6 +2,7 @@ import 'dotenv/config';
 import express from 'express';
 import cors from 'cors';
 import bodyParser from 'body-parser';
+import cookieParser from 'cookie-parser';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import connectDB from './database/db.js';
@@ -17,9 +18,13 @@ const __dirname = path.dirname(__filename);
 const app = express();
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: 'http://localhost:3000', // Update this to your frontend URL
+  credentials: true // Allow cookies to be sent
+}));
 app.use(express.json()); 
 app.use(bodyParser.urlencoded({ extended: true })); 
+app.use(cookieParser()); // Add cookie parser middleware
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // Connect to Database

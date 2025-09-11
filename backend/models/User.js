@@ -16,6 +16,20 @@ const userSchema = new Schema({
         unique: true,
         match: /^[0-9]{10}$/
     },
+    ignoredItems: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Item' }],
+    donationCount: {
+        type: Number,
+        default: 0
+    },
+    points: {
+        type: Number,
+        default: 0
+    },
+    lastLocation: {
+        latitude: { type: Number, default: null },
+        longitude: { type: Number, default: null },
+        updatedAt: { type: Date, default: null }
+    },
     password: {
         type: String,
         required: true

@@ -1,0 +1,403 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background: #f9fdfb;
+  color: #333;
+}
+
+/* Header */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  background: #e8f5e9;
+  border-bottom: 2px solid #c8e6c9;
+}
+
+header .logo h1{
+  color: #2e7d32;
+}
+
+header .logo {
+  display: flex;
+  align-items: center;
+}
+
+header .logo img {
+  height: 40px;
+  margin-right: 10px;
+}
+
+header nav a {
+  margin-left: 20px;
+  text-decoration: none;
+  font-weight: bold;
+  color: #2e7d32;
+  transition: 0.3s;
+}
+
+header nav a:hover {
+  color: #1b5e20;
+}
+
+/* Dashboard Layout */
+.dashboard {
+  display: flex;
+  padding: 30px;
+  gap: 30px;
+}
+
+/* Sidebar */
+.sidebar {
+  flex: 1;
+  max-width: 280px;
+}
+
+.sidebar .info{
+  text-align:left;
+}
+
+.profile-card {
+  background: #fff;
+  border-radius: 15px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.profile-pic {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  margin-bottom: 15px;
+}
+
+.profile-card h2 {
+  font-size: 22px;
+  margin-bottom: 5px;
+}
+
+.profile-card p {
+  margin: 5px 0;
+  color: #555;
+}
+
+.rank {
+  margin: 15px 0;
+  font-weight: bold;
+  color: #2e7d32;
+}
+
+.stats {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+.stats div h3 {
+  color: #2e7d32;
+  font-size: 22px;
+}
+
+/* Main Content */
+.main-content {
+  flex: 3;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+/* Rewards Section */
+.rewards {
+  background: #fff;
+  border-radius: 15px;
+  padding: 25px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.rewards-container {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 20px;
+  align-items: start;
+}
+
+.rewards-info {
+  text-align: center;
+  padding: 20px;
+  background: #f8f9fa;
+  border-radius: 12px;
+  border: 1px solid #e0e0e0;
+}
+
+.rewards h2 {
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: #2e7d32;
+}
+
+.reward-img {
+  width: 120px;
+  margin: 15px 0;
+  transition: transform 0.3s ease;
+}
+
+.reward-img:hover {
+  transform: scale(1.05);
+}
+
+.points {
+  font-size: 22px;
+  font-weight: bold;
+  color: #2e7d32;
+  margin: 15px 0;
+}
+
+.location-map {
+  background: #f8f9fa;
+  padding: 15px;
+  border-radius: 12px;
+  border: 1px solid #e0e0e0;
+}
+
+.location-map h4 {
+  margin: 0 0 10px 0;
+  color: #333;
+  font-size: 16px;
+  text-align: center;
+}
+
+.map-controls {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.refresh-location-btn {
+  background: #2e7d32;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.refresh-location-btn:hover {
+  background: #1b5e20;
+  transform: scale(1.05);
+}
+
+.pin-note {
+  display: block;
+  color: #666;
+  margin-top: 8px;
+  text-align: center;
+  font-style: italic;
+  font-size: 11px;
+}
+
+@media (max-width: 768px) {
+  .rewards-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .location-map {
+    margin-top: 20px;
+  }
+}
+
+.action-btns button {
+  margin: 10px;
+  padding: 10px 20px;
+  border-radius: 25px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.donate {
+  background: #2e7d32;
+  color: white;
+}
+
+.receive {
+  background: #f1f8e9;
+  color: #2e7d32;
+  border: 1px solid #2e7d32;
+}
+
+.action-btns button:hover {
+  transform: scale(1.05);
+}
+
+/* Suggestions Section */
+.suggestions {
+  background: #fff;
+  border-radius: 15px;
+  padding: 25px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.suggestions h2 {
+  margin-bottom: 20px;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background: #fafafa;
+  border-radius: 12px;
+  padding: 15px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  text-align: center;
+  transition: transform 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.product-img {
+  height: 120px;
+  background: #c8e6c9;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.card h3 {
+  margin-bottom: 8px;
+}
+
+.card p {
+  font-size: 14px;
+  color: #666;
+}
+
+.card-actions {
+  margin-top: 12px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.card-actions button {
+  padding: 6px 12px;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.card-actions .receive {
+  background: #2e7d32;
+  color: white;
+}
+
+.card-actions .reject {
+  background: #ffcdd2;
+  color: #b71c1c;
+}
+
+.card-actions button:hover {
+  transform: scale(1.05);
+}
+
+.product-img {
+  width: 100%;
+  height:165px;
+  object-fit: cover;   /* keeps image proportionate */
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+/* Overlay background */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.7);
+  display: none; /* hidden by default */
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+/* Overlay box */
+.overlay-content {
+  background: #fff;
+  padding: 25px;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+  position: relative;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Close button */
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  cursor: pointer;
+}
+
+/* Form styling */
+.overlay-content form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.overlay-content label {
+  font-weight: bold;
+  text-align: left;
+}
+
+.overlay-content input,
+.overlay-content select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.submit-btn {
+  padding: 12px;
+  background: #2e7d32;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.submit-btn:hover {
+  background: #1b5e20;
+}
+
+/* Fade animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}

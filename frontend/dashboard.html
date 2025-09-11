@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EcoCycle Dashboard</title>
+  <link rel="stylesheet" href="dashboard.css">
+  <link rel="icon" href="images/logo-2.png">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="logo">
+      <img src="images/logo-2.png" alt="EcoCycle Logo">
+      <h1>EcoCycle</h1>
+    </div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="leaderboard/learderboard.html">Leaderboard</a>
+      <button id="logoutBtn" class="logout-btn">Logout</button>
+    </nav>
+  </header>
+
+  <!-- Dashboard Container -->
+  <div class="dashboard-container">
+    <!-- Top Section -->
+    <div class="dashboard-top">
+      <!-- Profile Summary -->
+      <div class="profile-summary">
+        <div class="user-info">
+          <div class="user-details">
+            <h3 class="rank" id="userRank">🏆 Loading...</h3>
+            <p class="username"><strong>User:</strong> <span id="userName">Loading...</span></p> 
+            <p class="email"><strong>Email:</strong> <span id="userEmail">Loading...</span></p>
+            <p class="mob-no"><strong>Mobile:</strong> <span id="userPhone">Loading...</span></p>
+          </div>
+          <div class="stats">
+            <div class="stat-item">
+              <h3 id="donationCount">-</h3>
+              <p>Donations</p>
+            </div>
+            <div class="stat-item">
+              <h3 id="receivedCount">-</h3>
+              <p>Received</p>
+            </div>
+            <div class="stat-item">
+              <h3>💰 <span id="userPoints">0</span></h3>
+              <p>Points</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="action-buttons">
+        <button class="donate" id="donateBtn">Donate Item</button>
+        <button class="receive" id="receiveBtn">Find Items</button>
+      </div>
+    </div>
+
+    <!-- Main Grid -->
+    <div class="dashboard-grid">
+      <!-- Location Section -->
+      <section class="location-section">
+        <h2>📍 Your Location</h2>
+        <div id="map" style="height: 200px; width: 100%; border-radius: 8px;"></div>
+        <div class="map-controls">
+          <p class="location-text">Current Location: <span id="userLocation">Getting location...</span></p>
+          <button id="refreshLocationBtn" class="refresh-location-btn" title="Refresh coordinates">🔄</button>
+        </div>
+        <small class="pin-note">💡 Click on map to update your location</small>
+      </section>
+
+      <!-- Donations Section -->
+      <section class="donations-section">
+        <h2>🎁 Your Donations</h2>
+        <div class="product-grid" id="donationsGrid">
+          <div class="loading-message">Loading donations...</div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <!-- Overlay Donate Form -->
+<div id="donateOverlay" class="overlay">
+  <div class="overlay-content">
+    <span class="close-btn" onclick="closeOverlay()">&times;</span>
+    <h2>Donate an Item</h2>
+    <form id="donateForm">
+      <!-- Item Name -->
+      <label for="itemName">Item Name</label>
+      <input type="text" id="itemName" name="itemName" required>
+
+      <!-- Category -->
+      <label for="category">Category</label>
+      <select id="category" name="category" required>
+        <option value="">Select a Category</option>
+        <option value="clothes">Clothes</option>
+        <option value="electronics">Electronics</option>
+        <option value="furniture">Furniture</option>
+      </select>
+
+      <!-- Upload Images -->
+      <label for="images">Upload Images (Exactly 2 required)</label>
+      <input type="file" id="images" name="images" accept="image/*" multiple required>
+      <small class="image-note">📷 Please select exactly 2 images of the item</small>
+
+  <!-- Gender -->
+      <label for="gender">Gender</label>
+      <select id="gender" name="gender" required>
+        <option value="">Select Gender</option>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+        <option value="other">Other</option>
+      </select>
+      
+
+      <!-- Urgent Listing -->
+      <label>
+        <input type="checkbox" id="urgent" name="urgent">
+        Urgent Listing
+      </label>
+
+      <!-- Location -->
+      <label for="location">Location</label>
+      <input type="text" id="location" name="location" readonly>
+      <small class="location-note">📍 Location will be automatically detected from your device</small>
+
+      <!-- Submit -->
+      <button type="submit" class="submit-btn">Submit Donation</button>
+    </form>
+  </div>
+</div>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/axios@1.6.0/dist/axios.min.js"></script>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="dashboard.js"></script>
+</body>
+</html>

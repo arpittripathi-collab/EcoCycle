@@ -1,7 +1,7 @@
 import express from 'express';
 import multer from 'multer';
 import path from 'path';
-import { createItem, getItems } from '../controllers/itemController.js';
+import { createItem, getItems, deleteItem } from '../controllers/itemController.js';
 import auth from '../middleware/auth.js';
 
 const router = express.Router();
@@ -46,5 +46,6 @@ router.post('/', auth, (req, res) => {
 });
 
 router.get('/', auth, getItems);
+router.delete('/:id', auth, deleteItem);
 
 export default router;

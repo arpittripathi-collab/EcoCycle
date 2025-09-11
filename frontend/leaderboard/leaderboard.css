@@ -1,0 +1,81 @@
+/* Leaderboard Section */
+.leaderboard-section {
+  padding: 3rem 1rem;
+  background: #f6fdf7; /* light eco green tint */
+  text-align: center;
+}
+
+.leaderboard-title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #2e7d32; /* eco green */
+  margin-bottom: 0.5rem;
+}
+
+.leaderboard-subtitle {
+  color: #666;
+  margin-bottom: 2rem;
+  font-size: 1rem;
+}
+
+.leaderboard {
+  max-width: 800px;
+  margin: 0 auto;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+}
+
+.leaderboard-header, 
+.leaderboard-row {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr 1fr;
+  padding: 1rem;
+  font-size: 1rem;
+  align-items: center;
+}
+
+.leaderboard-header {
+  background: #2e7d32;
+  color: #fff;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.leaderboard-row {
+  background: #fff;
+  border-bottom: 1px solid #ddd;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.leaderboard-row:hover {
+  background: #e8f5e9; /* light green hover */
+  transform: translateY(-3px);
+}
+
+/* Rank highlights */
+.gold { background: #fff8e1; }   /* light gold */
+.silver { background: #f5f5f5; } /* silver gray */
+.bronze { background: #fbe9e7; } /* light bronze */
+
+/* Badges */
+.badge {
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.gold-badge {
+  background: linear-gradient(45deg, #FFD700, #FFC107);
+}
+
+.silver-badge {
+  background: linear-gradient(45deg, #B0BEC5, #90A4AE);
+}
+
+.bronze-badge {
+  background: linear-gradient(45deg, #FF7043, #D84315);
+}

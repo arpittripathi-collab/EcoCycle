@@ -1,13 +1,212 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Donor-Receiver Marketplace</title>
-  </head>
-  <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.js"></script>
-  </body>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EcoCycle</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=hub" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" />
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="responsive-style.css">
+  <link rel="icon" href="images/logo-2.png">
+</head>
+
+<body>
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light px-3 fixed-top">
+      <div class="container-fluid">
+
+        <!-- Left side: logo + name -->
+  <a class="navbar-brand d-flex align-items-center" href="index.html">
+          <img src="images/logo-2.png" alt="Logo" width="40" height="40" class="me-2">
+          <h3 class="m-0">EcoCycle</h3>
+        </a>
+
+        <!-- Hamburger toggle -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Center: links + Right: buttons (inside collapse) -->
+        <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+          <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+            <li class="nav-item mx-2">
+              <a class="nav-link" href="#howitworks">How it works</a>
+            </li>
+            <li class="nav-item mx-2">
+              <a class="nav-link" href="#community">Community</a>
+            </li>
+            <li class="nav-item mx-2">
+              <a class="nav-link" href="#about">About us</a>
+            </li>
+          </ul>
+
+          <!-- Buttons (move inside collapse) -->
+          <div class="d-flex mt-2 mt-lg-0">
+            <button id="dashboardBtn" class="btn btn-primary me-3">Dashboard</button>
+           <button class="btn btn-outline-primary" onclick="window.location.href='login-form/login-form.html'">Log In</button>
+
+            
+          </div>
+        </div>
+
+      </div>
+    </nav>
+  </header>
+
+  <section>
+    <div class="bg-img">
+      <div class="bg-content">
+        <h1>Join The Circular Economy <br> Revolution</h1>
+        <p>Give items a new life and earn rewards. Our AI-powered marketplace connects donors <br> with those in need,
+          building a more sustainable community.</p>
+      </div>
+
+      <div class="tag-line">
+        <p id="tagline"><strong>"Sustainability starts with you"</strong></p>
+      </div>
+
+    </div>
+  </section>
+<!--How it works section-->
+  <section class="text-center my-5" id="howitworks">
+    <h2>How EcoCycle Works</h2>
+    <p>Our platform simplifies the process of giving and receiving, creating a seamless <br> cycle of reuse that
+      benefits everyone and the planet.</p>
+
+    <div class="container">
+      <div class="row my-5 ">
+
+        <div class="col-lg-4 col-md-6 col-sm-12 card crd">
+          <div class="icon"><i class="fa-solid fa-hand-holding-heart"></i></div>
+          <h4>1. Donate</h4>
+          <p>Easily list items you no longer need. Our intelligent system helps you categorize and post your donations
+            in minutes.</p>
+        </div>
+
+        <div class="col-lg-4 col-md-6 col-sm-12 card crd">
+          <div class="icon"><span class="material-symbols-outlined">
+              hub
+            </span></i></div>
+          <h4>2. Match</h4>
+          <p>Our smart AI algorithm connects your items with individuals and organizations who needd them most,
+            ensuring a perfect match.</p>
+        </div>
+
+        <div class="col-lg-4 col-md-6 col-sm-12 card crd">
+          <div class="icon"><i class="fa-solid fa-medal"></i></div>
+          <h4>3. Reward</h4>
+          <p>Earn points for your contributions to the circular economy. Redeem your rewards with our growing network
+            of sustainable partners.</p>
+        </div>
+
+
+      </div>
+
+
+    </div>
+  </section>
+
+  <section id="community" class="community-section py-5">
+  <div class="container text-center">
+    <h2 class="mb-4">Our Community</h2>
+    <p class="lead mb-5">
+      Together, we are building a sustainable future by sharing, reusing, and supporting one another.
+    </p>
+
+    <div class="row">
+      <div class="col-md-4 mb-4 ">
+        <div class="card h-100 shadow-sm crd">
+          <div class="card-body">
+            <h5 class="card-title">10,000+ Items Reused</h5>
+            <p class="card-text">Every item donated helps reduce waste and gives it a second life.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-4 ">
+        <div class="card h-100 shadow-sm crd">
+          <div class="card-body">
+            <h5 class="card-title">5,000+ Community Members</h5>
+            <p class="card-text">People from all walks of life contributing to a greener planet.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-4 ">
+        <div class="card h-100 shadow-sm crd">
+          <div class="card-body">
+            <h5 class="card-title">2,000+ Rewards Earned</h5>
+            <p class="card-text">Donors are recognized for their efforts in building sustainability.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about" class="about-section py-5">
+  <div class="container">
+    <div class="row align-items-center">
+      
+      <!-- Left Side: Image -->
+      <div class="col-md-6 mb-4 mb-md-0">
+        <img src="images/aboutus.jpg" alt="About Us" class="img-fluid rounded shadow">
+      </div>
+      
+      <!-- Right Side: Content -->
+      <div class="col-md-6">
+        <h2 class="mb-4">About Us</h2>
+        <p class="lead">
+          We believe in creating a world where every item has a purpose and nothing goes to waste.
+          Our platform connects donors with communities, turning unused goods into valuable resources.
+        </p>
+        <p>
+          By combining sustainability with technology, we empower people to contribute toward a circular economy, 
+          reduce environmental impact, and build stronger, greener communities.  
+        </p>
+        <button id="joinMissionBtn" class="btn btn-success mt-3">Join Our Mission</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+  <footer>
+    <div class="foot-div1">
+      <div class="foot1-flex">
+      <img src="images/recycle-white.png" alt="Logo" width="40" height="40" class="me-2">
+      <h3 class="m-0">EcoCycle</h3>
+    </div>
+    <br>
+    <p>Building a sustainable future, one item at a time.</p>
+    </div>
+
+    <div class="foot-div2">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="">Terms of Service</a></li>
+        <li><a href="">Privacy Policy</a></li>
+        <li><a href="">Contact Us</a></li>
+      </ul>
+    </div>
+
+    <div class="foot-div3">
+      <h4>Follow Us</h4>
+      <a href=""><i class="fa-brands fa-twitter"></i></a>
+      <a href=""><i class="fa-brands fa-instagram"></i></a>
+      <a href=""><i class="fa-brands fa-facebook"></i></a>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios@1.6.0/dist/axios.min.js"></script>
+  <script src="app.js"></script>
+</body>
+
 </html>

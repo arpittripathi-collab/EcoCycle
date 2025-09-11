@@ -15,9 +15,10 @@ const ItemSchema = new mongoose.Schema({
     required: true
   },
   gender: { type: String, enum: ['male', 'female', 'other'], default: 'other' },
-  profession: { type: String },
-  age: { type: Number },
+  // profession and age removed per requirements
   priority: { type: Boolean, default: false },
+  isClaimed: { type: Boolean, default: false },
+  claimedBy: { type: mongoose.Schema.Types.ObjectId, ref: 'User', default: null },
   location: {
     type: { type: String, enum: ['Point'], default: 'Point' },
     coordinates: { type: [Number], required: true }
